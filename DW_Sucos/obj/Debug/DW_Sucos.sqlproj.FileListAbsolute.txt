@@ -1,0 +1,5 @@
+D:\Alura\Trilha BI Microsoft\Repos\DW_Sucos\bin\Debug\DW_Sucos.dacpac
+D:\Alura\Trilha BI Microsoft\Repos\DW_Sucos\bin\Debug\DW_Sucos.dll
+D:\Alura\Trilha BI Microsoft\Repos\DW_Sucos\bin\Debug\DW_Sucos.pdb
+D:\Alura\Trilha BI Microsoft\Repos\DW_Sucos\obj\Debug\DW_Sucos.dll
+D:\Alura\Trilha BI Microsoft\Repos\DW_Sucos\obj\Debug\DW_Sucos.pdb
