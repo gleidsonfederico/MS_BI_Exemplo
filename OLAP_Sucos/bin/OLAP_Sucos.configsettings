@@ -27,6 +27,111 @@
         <ID>Tempo</ID>
       </Dimension>
     </Dimensions>
+    <Cubes>
+      <Cube>
+        <ID>VENDAS</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>FATO 001</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 001</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 002</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 002</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 004</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 004</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
+        <ID>CUSTOS</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>FATO 001</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 001</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 003</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 003</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 005</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 005</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
+        <ID>PRESIDENCIA</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>FATO 001</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 001</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 002</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 002</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 003</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 003</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 004</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 004</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>FATO 005</ID>
+            <Partitions>
+              <Partition>
+                <ID>FATO 005</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+    </Cubes>
     <DataSourceImpersonationInfo>
       <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
       <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
