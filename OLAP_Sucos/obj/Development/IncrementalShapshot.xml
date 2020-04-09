@@ -45,6 +45,27 @@
           <String>Cliente</String>
         </ID>
       </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>AgxYtSTgaKL7tYxld0ZUrQ/4Usk=4/9/2020 2:57:48 PM4/9/2020 2:54:31 PM</TimeStamp>
+        <ID>
+          <String>Produto</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>NQ/+IJky4rJAT5t8BpedUXSMx4Y=4/9/2020 3:07:16 PM4/9/2020 3:00:58 PM</TimeStamp>
+        <ID>
+          <String>Organizacional</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>Z++57yOA6wjh7+zXsAJqyMRtbSE=4/9/2020 3:52:03 PM4/9/2020 3:36:41 PM</TimeStamp>
+        <ID>
+          <String>Tempo</String>
+        </ID>
+      </ObjectSnapshot>
     </ObjectSnapshots>
     <DatabaseSnapshot>
       <Type>Microsoft.AnalysisServices.Database</Type>
@@ -57,5 +78,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2020-04-08T21:39:12.693333Z</LastDeployed>
+  <LastDeployed>2020-04-09T18:52:14.98Z</LastDeployed>
 </DeploymentSnapshot>

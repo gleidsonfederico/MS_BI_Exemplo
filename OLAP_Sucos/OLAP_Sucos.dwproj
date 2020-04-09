@@ -15,6 +15,18 @@
       <Name>Cliente.dim</Name>
       <FullPath>Cliente.dim</FullPath>
     </ProjectItem>
+    <ProjectItem>
+      <Name>Produto.dim</Name>
+      <FullPath>Produto.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Organizacional.dim</Name>
+      <FullPath>Organizacional.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Tempo.dim</Name>
+      <FullPath>Tempo.dim</FullPath>
+    </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
