@@ -1,0 +1,12 @@
+WITH
+MEMBER [Measures].[Novo Faturarento Líquido] AS
+'[Measures].[Faturamento] - [Measures].[Frete Rateio] - [Measures].[Imposto]', 
+FORMAT_STRING = '#,###.##'
+MEMBER [Measures].[Variação Faturamento] AS
+'[Measures].[Novo Faturarento Líquido] / [Measures].[Faturamento]', 
+FORMAT_STRING = '#,###.## %'
+SELECT ({[Produto].[Categoria].MEMBERS}) On Rows,
+({[Measures].[Faturamento], [Measures].[Faturamento Líquido], [Measures].[Novo Faturarento Líquido],
+[Measures].[Variação Faturamento]}) On Columns
+from [COMPLETO]
+where ([Tempo].[Ano].&[2014])

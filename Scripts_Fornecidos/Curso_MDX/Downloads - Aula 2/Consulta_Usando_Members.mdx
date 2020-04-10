@@ -1,0 +1,21 @@
+select 
+({
+[Cliente].[Estado].members
+}) on rows,
+({
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[01-2014]&[01-2014] :
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[02-2014]&[06-2014]
+}) on columns
+from	[COMPLETO]
+where	[Measures].[Faturamento]
+
+select 
+({
+[Cliente].[Cidade].members
+}) on rows,
+({
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[01-2014]&[01-2014] :
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[02-2014]&[06-2014]
+}) on columns
+from	[COMPLETO]
+where	[Measures].[Faturamento]

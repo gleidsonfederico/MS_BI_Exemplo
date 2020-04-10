@@ -1,0 +1,9 @@
+WITH
+MEMBER [Tempo].[Mës e Ano].[Var Fev Jan] AS
+'(1 - ([Tempo].[Mës e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013] / [Tempo].[Mës e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013]))',
+FORMAT_STRING = '#,###.00 %'
+SELECT ({[Tempo].[Mës e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013], [Tempo].[Mës e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013], 
+[Tempo].[Mës e Ano].[Var Fev Jan]}) on columns,
+({[Produto].[Marca].members}) on rows
+from [COMPLETO]
+where ([Measures].[Faturamento])

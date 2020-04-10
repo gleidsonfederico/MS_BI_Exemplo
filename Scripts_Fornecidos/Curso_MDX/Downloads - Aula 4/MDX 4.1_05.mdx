@@ -1,0 +1,5 @@
+
+SELECT ({[Tempo].[Mës e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013], [Tempo].[Mës e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013]}) on columns,
+({[Produto].[Marca].members}) on rows
+from [COMPLETO]
+where ([Measures].[Faturamento])

@@ -1,0 +1,13 @@
+Select 
+FILTER (
+ORDER (
+CROSSJOIN (
+({ [Tempo].[Ano].&[2014] }),
+({ [Produto].[Hierarquia de Produtos].[Nível Marca].members })
+)
+, [Measures].[Faturamento], BDESC
+)
+,  [Measures].[Faturamento] >= 7000000)
+On Rows,
+( {[Measures].[Faturamento]} ) On Columns
+from [COMPLETO]

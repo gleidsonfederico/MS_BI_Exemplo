@@ -1,0 +1,7 @@
+WITH MEMBER [Measures].[% Taxa Variação] AS
+'[Measures].[Faturamento] / 
+( [Measures].[Faturamento] , [Tempo].[Hierarquia do Mês e Ano].Currentmember.Parent )'
+, FORMAT_STRING = '#,###.## %'
+SELECT NON EMPTY 
+({[Tempo].[Hierarquia do Mês e Ano].[Ano].&[2013].&[Primeiro Semestre 2013].Children}) on Rows,
+({[Measures].[Faturamento], [Measures].[% Taxa Variação]}) on Columns from [COMPLETO]

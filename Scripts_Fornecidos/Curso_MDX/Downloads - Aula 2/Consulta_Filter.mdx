@@ -1,0 +1,93 @@
+--Filter
+select	
+{
+[Produto].[Hierarquia de Produtos].[Nivel Marca].members
+}
+		on rows,
+{
+[Measures].[Faturamento]
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+
+
+
+--Filter
+select	
+filter(
+{
+[Produto].[Hierarquia de Produtos].[Nivel Marca].members
+},
+	  [Measures].[Faturamento] >= 10000000
+	  )
+		on rows,
+{
+[Measures].[Faturamento]
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+
+
+--filter order
+select	
+	filter(
+		order(
+				{
+				[Produto].[Hierarquia de Produtos].[Nivel Marca].members
+				},
+			[Measures].[Faturamento], bdesc
+			),
+	  [Measures].[Faturamento] >= 7000000
+		)
+		on rows,
+{
+[Measures].[Faturamento]
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+
+
+--filter order, isso esta errado, nao esta fazendo o filter
+select	
+	filter(
+		order(
+				{[Produto].[Hierarquia de Produtos].[Nivel Marca].members},
+			[Measures].[Faturamento], bdesc
+			),
+		[Measures].[Faturamento] >= 7000000
+		)
+		on rows,
+{
+[Tempo].[Ano].&[2014]
+}		
+		on columns
+from	[COMPLETO]
+where	[Measures].[Faturamento]
+
+
+
+
+
+--filter order com cross join
+select	
+	filter(
+		order(
+			Crossjoin(
+					{[Tempo].[Ano].&[2014]},
+					{[Produto].[Hierarquia de Produtos].[Nivel Marca].members}
+					),
+				[Measures].[Faturamento], bdesc
+				),
+			[Measures].[Faturamento] >= 7000000
+			)
+			on rows,
+{
+[Measures].[Faturamento]
+}		
+		on columns
+from	[COMPLETO]
+
+

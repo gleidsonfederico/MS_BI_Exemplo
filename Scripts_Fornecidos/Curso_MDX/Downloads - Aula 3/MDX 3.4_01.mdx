@@ -1,0 +1,4 @@
+Select ({ [Produto].[Hierarquia de Produtos].[Nível Marca].members }) On Rows,
+( {[Measures].[Faturamento]} ) On Columns
+from [COMPLETO]
+where ([Tempo].[Ano].&[2014])

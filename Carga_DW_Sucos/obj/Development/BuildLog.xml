@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Carga_DW_Sucos</Name>
-    <LastWriteTime>2020-04-08T18:29:59.7647686Z</LastWriteTime>
+    <LastWriteTime>2020-04-10T14:43:38.1944592Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -18,7 +18,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Carga_DW.dtsx</Name>
-      <LastWriteTime>2020-04-08T18:08:23.4883918Z</LastWriteTime>
+      <LastWriteTime>2020-04-10T14:43:22.0997781Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Carga_Cubos.dtsx</Name>
+      <LastWriteTime>2020-04-10T13:56:57.4700667Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -1,0 +1,57 @@
+Select   (   {  [Cliente].[Estado].&[Rio de Janeiro], 
+ [Cliente].[Estado].&[Minas Gerais] } )   On Rows , 
+(  { [Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013] , 
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013] , 
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013]  }  )  On Columns 
+From  [COMPLETO]
+Where ([Measures].[Faturamento Liquido])
+
+
+
+Select   (   {  [Cliente].[Estado].&[Rio de Janeiro], 
+ [Cliente].[Estado].&[Minas Gerais] } )   On Rows , 
+(  { [Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013] :
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013]  }  )  On Columns 
+From  [COMPLETO]
+Where ([Measures].[Faturamento Liquido])
+
+
+Select	
+(   {  
+[Cliente].[Estado].&[Rio de Janeiro], 
+[Cliente].[Estado].&[Minas Gerais] 
+} )   
+On Rows , 
+(  { 
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013] :
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013]  
+,
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[01-2014]&[01-2014] :
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[01-2014]&[03-2014]
+}  )  
+On Columns 
+From  [COMPLETO]
+Where ([Measures].[Faturamento Liquido])
+
+
+
+Select	
+(   {  
+[Cliente].[Estado].&[Rio de Janeiro], 
+[Cliente].[Estado].&[Minas Gerais] 
+} )   
+ 
+On Columns, 
+(  { 
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013] :
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013]  
+,
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[01-2014]&[01-2014] :
+[Tempo].[Mes e Ano].&[2014]&[01-2014]&[01-2014]&[03-2014]
+}  )  
+On Rows
+From  [COMPLETO]
+Where ([Measures].[Faturamento Liquido])
+
+
+

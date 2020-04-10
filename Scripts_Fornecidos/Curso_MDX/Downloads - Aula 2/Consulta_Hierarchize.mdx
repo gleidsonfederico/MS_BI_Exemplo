@@ -1,0 +1,44 @@
+--Hierarchize
+select	
+{
+[Cliente].[Estado].&[São Paulo],
+[Cliente].[Estado].&[Goiais],
+[Cliente].[Estado].&[Paraná],
+[Cliente].[Estado].&[Bahia]
+}
+		on rows,
+{
+[Tempo].[Semestre e Ano].members
+}		
+		on columns
+from	[COMPLETO]
+
+
+select	Hierarchize(
+{
+[Cliente].[Estado].&[São Paulo],
+[Cliente].[Estado].&[Goiais],
+[Cliente].[Estado].&[Paraná],
+[Cliente].[Estado].&[Bahia]
+}
+		)on rows,
+{
+[Tempo].[Semestre e Ano].members
+}		
+		on columns
+from	[COMPLETO]
+
+select	Hierarchize(
+{
+[Cliente].[Estado].&[São Paulo],
+[Cliente].[Estado].&[Goiais],
+[Cliente].[Estado].&[Paraná],
+[Cliente].[Estado].&[Bahia]
+}
+		)on columns,
+{
+[Tempo].[Semestre e Ano].members
+}		
+		on rows
+from	[COMPLETO]
+

@@ -1,0 +1,13 @@
+--Children
+select	Non empty(
+({
+[Produto].[Produto].members
+}) 
+		) on rows,
+({
+[Measures].[Faturamento]
+}) on columns
+from	[COMPLETO]
+where	[Cliente].[Hierarquia Segmento].[Nivel Segmento].&[Farmácias].&[Drogas Super Brasília - DF]
+
+

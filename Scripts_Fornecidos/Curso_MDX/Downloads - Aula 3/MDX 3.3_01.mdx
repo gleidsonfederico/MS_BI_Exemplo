@@ -1,0 +1,4 @@
+SELECT ({[Produto].[Marca].&[Festival de Sabores], [Produto].[Marca].&[Pedaços de Frutas], [Produto].[Marca].&[Sabor da Montanha]}) ON ROWS,
+({ [Tempo].[Ano].&[2014] }) ON Columns
+from [COMPLETO]
+WHERE ({ [Measures].[Faturamento] })

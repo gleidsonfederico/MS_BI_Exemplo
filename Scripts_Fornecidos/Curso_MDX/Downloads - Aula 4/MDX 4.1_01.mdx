@@ -1,0 +1,4 @@
+SELECT ({[Produto].[Categoria].MEMBERS}) On Rows,
+({[Measures].[Faturamento], [Measures].[Faturamento Líquido]}) On Columns
+from [COMPLETO]
+where ([Tempo].[Ano].&[2014])

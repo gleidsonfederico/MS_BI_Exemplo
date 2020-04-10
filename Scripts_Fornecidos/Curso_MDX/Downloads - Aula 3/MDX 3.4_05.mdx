@@ -1,0 +1,11 @@
+Select 
+FILTER (
+ORDER (
+({ [Produto].[Hierarquia de Produtos].[Nível Marca].members })
+, [Measures].[Faturamento], BDESC
+)
+,  [Measures].[Faturamento] >= 7000000)
+On Rows,
+( {[Tempo].[Ano].&[2014]} ) On Columns
+from [COMPLETO]
+where ({[Measures].[Faturamento]})
