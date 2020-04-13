@@ -1,0 +1,100 @@
+--With
+select	
+
+{
+[Produto].[Categoria].members
+}
+	on rows,
+{
+[Measures].[Faturamento Liquido]
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+go
+
+
+
+
+
+With 
+	Member [Measures].[Novo Faturamento Liquido] as 
+	'[Measures].[Faturamento] - [Measures].[Frete Rateio] - [Measures].[Imposto]'
+select	
+{
+[Produto].[Categoria].members
+}
+	on rows,
+{
+[Measures].[Faturamento Liquido],
+[Measures].[Novo Faturamento Liquido]
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+
+
+
+
+
+
+With 
+	Member [Measures].[Novo Faturamento Liquido] as 
+	'[Measures].[Faturamento] - [Measures].[Frete Rateio] - [Measures].[Imposto]'
+	Member [Measures].[Variacao Faturamento] as 
+	'[Measures].[Novo Faturamento Liquido] / [Measures].[Faturamento] '
+select	
+{
+[Produto].[Categoria].members
+}
+	on rows,
+{
+[Measures].[Faturamento Liquido],
+[Measures].[Novo Faturamento Liquido],
+[Measures].[Variacao Faturamento] 
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+
+
+
+
+
+With 
+	Member [Measures].[Novo Faturamento Liquido] as 
+	'[Measures].[Faturamento] - [Measures].[Frete Rateio] - [Measures].[Imposto]',
+	format_string = '#,###.##' 
+	Member [Measures].[Variacao Faturamento] as
+	'[Measures].[Novo Faturamento Liquido] / [Measures].[Faturamento] ',
+	format_string = '#,###.## %' 
+select	
+{
+[Produto].[Categoria].members
+}
+	on rows,
+{
+[Measures].[Faturamento Liquido],
+[Measures].[Novo Faturamento Liquido],
+[Measures].[Variacao Faturamento] 
+}		
+		on columns
+from	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+
+
+with 
+	member [Tempo].[Mes e Ano].[Variacao Fev Jan] as 
+	'1-( [Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013] / [Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013])',
+	format_string = '#,###.00 %'
+select 
+{
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].[Variacao Fev Jan]
+} on columns,
+{
+[Produto].[Marca].members
+} on rows
+from [COMPLETO]
+where [Measures].[Faturamento]

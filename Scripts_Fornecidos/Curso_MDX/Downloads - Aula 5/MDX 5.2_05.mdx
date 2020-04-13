@@ -1,0 +1,10 @@
+WITH MEMBER [Measures].[Variação Faturamento Ano]
+AS
+'
+([Measures].[Faturamento])/
+([Measures].[Faturamento], ParallelPeriod([Tempo].[Hierarquia do Mês e Ano].[Nível Mës e Ano], 12, 
+[Tempo].[Hierarquia do Mês e Ano].Currentmember)) -1',
+FORMAT_STRING = "#,###.00 %"
+SELECT ({[Tempo].[Hierarquia do Mês e Ano].[Nível Mës e Ano].Members}) On Rows,
+({[Measures].[Faturamento], [Measures].[Variação Faturamento Ano]}) On Columns
+FROM [COMPLETO]

@@ -1,0 +1,8 @@
+WITH
+MEMBER [Measures].[Faturamento de Vendas]
+AS
+'[Measures].[Faturamento]', FORMAT_STRING = "##,###.00"
+SELECT ({ [Cliente].[Hierarquia Geográfica].[Nível Cidade].MEMBERS }) ON ROWS,
+( { [Measures].[Faturamento de Vendas]}) ON COLUMNS
+FROM [COMPLETO]
+WHERE ([Tempo].[Ano].&[2014])

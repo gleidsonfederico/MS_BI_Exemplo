@@ -1,0 +1,106 @@
+--NAVEGANDO NAS DIMENSOES
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2013].&[Primeiro Semestre 2013].&[2013]&[01-2013]&[01-2013].children
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+WITH MEMBER
+	[MEASURES].[% TAXA DE VARIACAO] AS 
+	'[Measures].[Faturamento] / 
+	([Measures].[Faturamento] , [Tempo].[Hierarquia do Mes e Ano].[Ano].&[2013].&[Primeiro Semestre 2013].&[2013]&[01-2013]&[01-2013])',
+	FORMAT_STRING = '#,###.# %'
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2013].&[Primeiro Semestre 2013].&[2013]&[01-2013]&[01-2013].children
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[MEASURES].[% TAXA DE VARIACAO] 
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+
+WITH MEMBER
+	[MEASURES].[% TAXA DE VARIACAO] AS 
+	'[Measures].[Faturamento] / 
+	([Measures].[Faturamento] , [Tempo].[Hierarquia do Mes e Ano].CURRENTMEMBER.PARENT)',
+	FORMAT_STRING = '#,###.# %'
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2013].&[Primeiro Semestre 2013].children
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[MEASURES].[% TAXA DE VARIACAO] 
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+WITH MEMBER
+	[MEASURES].[% TAXA DE VARIACAO TRIMESTRE] AS 
+	'[Measures].[Faturamento] / 
+	([Measures].[Faturamento] , [Tempo].[Hierarquia do Mes e Ano].CURRENTMEMBER.PARENT)',
+	FORMAT_STRING = '#,###.# %'
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].MEMBERS
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[MEASURES].[% TAXA DE VARIACAO TRIMESTRE] 
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+WITH MEMBER
+	[MEASURES].[% TAXA DE VARIACAO TRIMESTRE] AS 
+	'[Measures].[Faturamento] / 
+	([Measures].[Faturamento] , [Tempo].[Hierarquia do Mes e Ano].CURRENTMEMBER.PARENT)',
+	FORMAT_STRING = '#,###.# %'
+	 MEMBER
+	[MEASURES].[% TAXA DE VARIACAO SEMESTRE] AS 
+	'[Measures].[Faturamento] / 
+	([Measures].[Faturamento] , [Tempo].[Hierarquia do Mes e Ano].CURRENTMEMBER.PARENT.PARENT)',
+	FORMAT_STRING = '#,###.# %'
+	 MEMBER
+	[MEASURES].[% TAXA DE VARIACAO ANO] AS 
+	'[Measures].[Faturamento] / 
+	([Measures].[Faturamento] , [Tempo].[Hierarquia do Mes e Ano].CURRENTMEMBER.PARENT.PARENT.PARENT)',
+	FORMAT_STRING = '#,###.# %'
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].MEMBERS
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[MEASURES].[% TAXA DE VARIACAO TRIMESTRE],
+[MEASURES].[% TAXA DE VARIACAO SEMESTRE],
+[MEASURES].[% TAXA DE VARIACAO ANO]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]

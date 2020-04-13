@@ -1,0 +1,6 @@
+WITH MEMBER [Measures].[Variação Faturamento] AS
+'[Measures].[Faturamento] - ([Measures].[Faturamento], [Tempo].[Hierarquia do Mês e Ano].Currentmember.PrevMember )',
+FORMAT_STRING = "##,###.00"
+select non empty {[Tempo].[Hierarquia do Mês e Ano].[Nível Mës e Ano].members} on rows,
+{[Measures].[Faturamento], [Measures].[Variação Faturamento]} on columns
+from [COMPLETO]

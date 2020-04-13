@@ -1,0 +1,12 @@
+WITH
+SET [Cidades] AS
+'ORDER([Cliente].[Hierarquia Geográfica].[Nível Cidade].MEMBERS, [Measures].[Faturamento], BDESC)'
+MEMBER [Measures].[Faturamento de Vendas]
+AS
+'[Measures].[Faturamento]', FORMAT_STRING = "##,###.00"
+MEMBER [Measures].[Posição no Rank] AS
+'RANK( [Cliente].[Hierarquia Geográfica].Currentmember, [Cidades])' , FORMAT_STRING = "#;#;-"
+SELECT ({ [Cidades] }) ON ROWS,
+( { [Measures].[Faturamento de Vendas], [Measures].[Posição no Rank]}) ON COLUMNS
+FROM [COMPLETO]
+WHERE ([Tempo].[Ano].&[2014])

@@ -1,0 +1,63 @@
+--NAVEGANDO NAS DIMENSOES
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+with member 
+[measures].[Faturamento YTD] as 
+'Sum(PeriodsToDate([Tempo].[Hierarquia do Mes e Ano].[Ano], [Tempo].[Hierarquia do Mes e Ano].currentmember),[Measures].[Faturamento])',
+Format_String = "#.###.00"
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[measures].[Faturamento YTD] 
+
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+with member 
+[measures].[Faturamento YTD] as 
+'Sum(PeriodsToDate([Tempo].[Hierarquia do Mes e Ano].[Ano], [Tempo].[Hierarquia do Mes e Ano].currentmember),[Measures].[Faturamento])',
+Format_String = "#.###.00"
+
+member 
+[measures].[Faturamento QTD] as 
+'Sum(PeriodsToDate([Tempo].[Hierarquia do Mes e Ano].[Nivel  Trimestre e Ano], [Tempo].[Hierarquia do Mes e Ano].currentmember),[Measures].[Faturamento])',
+Format_String = "#.###.00"
+
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[measures].[Faturamento YTD],
+[measures].[Faturamento QTD]
+
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+

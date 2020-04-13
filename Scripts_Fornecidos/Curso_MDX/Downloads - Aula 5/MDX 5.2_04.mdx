@@ -1,0 +1,7 @@
+WITH MEMBER [Measures].[Faturamento Sobre 6]
+AS
+'([Measures].[Faturamento], ParallelPeriod([Tempo].[Hierarquia do Mês e Ano].[Nível Mës e Ano], -6, [Tempo].[Hierarquia do Mês e Ano].Currentmember))',
+FORMAT_STRING = "#,###.00"
+SELECT ({[Tempo].[Hierarquia do Mês e Ano].[Nível Mës e Ano].Members}) On Rows,
+({[Measures].[Faturamento], [Measures].[Faturamento Sobre 6]}) On Columns
+FROM [COMPLETO]

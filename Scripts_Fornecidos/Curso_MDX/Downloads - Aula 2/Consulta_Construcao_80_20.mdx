@@ -1,0 +1,46 @@
+--Pareto
+With
+
+Set [Clientes] as 
+'Order([Cliente].[Hierarquia Geografica].[Nivel Cliente], [Measures].[Faturamento], BDESC)'
+
+member [Measures].[Posicao no Ranking] as 
+'Rank([Cliente].[Hierarquia Geografica].currentMember,[Clientes])' , format_String = "#;#;-"
+
+member [Measures].[Faturamento de Vendas] as 
+'[Measures].[Faturamento]',Format_String = "#,###.00"
+
+member [measures].[Percentual das Vendas] as 
+'[Measures].[Faturamento] / ([Measures].[Faturamento],[Cliente].[Hierarquia Geografica].[All])', format_String = "#,###.00 %"
+
+member [measures].[Faturamento Acumulado] as 
+'Sum(Head([Clientes],[Measures].[Posicao no Ranking]),[Measures].[Faturamento])', format_String =  "#,###.00"
+
+member [measures].[Total de Clientes] as 
+'[Clientes].count', format_String =  "#;#;-"
+
+member [measures].[Percentual Numero de Clientes] as 
+'[Measures].[Posicao no Ranking] / [measures].[Total de Clientes]' , format_String = "#,###.00 %"
+
+member [measures].[Percentual de Vendas Acumulado] as 
+'Sum(Head([Clientes],[Measures].[Posicao no Ranking]),[measures].[Percentual das Vendas])', format_String = "#,###.00 %"
+
+SELECT	non empty (
+{
+[Clientes]
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento de Vendas],
+--[Measures].[Posicao no Ranking],
+--[measures].[Percentual das Vendas],
+--[measures].[Faturamento Acumulado],
+--[measures].[Total de Clientes],
+[measures].[Percentual de Vendas Acumulado],
+[measures].[Percentual Numero de Clientes]
+
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+where	[Tempo].[Ano].&[2014]
+

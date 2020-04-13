@@ -1,0 +1,7 @@
+WITH MEMBER
+[Measures].[FATURAMENTO YTD] AS
+'Sum(PeriodsToDate([Tempo].[Hierarquia do Mês e Ano].[Ano], [Tempo].[Hierarquia do Mês e Ano].Currentmember),[Measures].[Faturamento])',
+FORMAT_STRING = "##,###.00"
+SELECT NON EMPTY ({[Tempo].[Hierarquia do Mês e Ano].[Nível Mës e Ano].MEMBERS})  ON ROWS,
+({[Measures].[Faturamento], [Measures].[FATURAMENTO YTD]}) ON COLUMNS
+FROM [COMPLETO]

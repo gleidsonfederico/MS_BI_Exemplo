@@ -1,0 +1,58 @@
+--NAVEGANDO NAS DIMENSOES
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+with member [Measures].[Variacao Faturamento Mesal] as 
+'[Measures].[Faturamento] - ([Measures].[Faturamento], [Tempo].[Hierarquia do Mes e Ano].currentmember.prevmember)',
+format_string = "##,###.00"
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[measures].[Variacao Faturamento Mesal]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+--Variacao percentual de tempo
+with member [Measures].[Variacao Faturamento Mesal Perc] as 
+'(([Measures].[Faturamento], [Tempo].[Hierarquia do Mes e Ano].currentmember) /
+([Measures].[Faturamento], [Tempo].[Hierarquia do Mes e Ano].currentmember.prevmember)) - 1',
+format_string = "##,###.00 %"
+
+	 member [Measures].[Variacao Faturamento Mesal] as 
+'[Measures].[Faturamento] - ([Measures].[Faturamento], [Tempo].[Hierarquia do Mes e Ano].currentmember.prevmember)',
+format_string = "##,###.00"
+
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[measures].[Variacao Faturamento Mesal],
+[Measures].[Variacao Faturamento Mesal Perc] 
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+

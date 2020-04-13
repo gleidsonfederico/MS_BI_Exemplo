@@ -1,0 +1,108 @@
+--Funcoes de CAlculo
+select	
+{
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013]
+}
+	on rows,
+{
+[Measures].[Margem]
+}		
+		on columns
+from	[COMPLETO]
+
+
+
+--Soma
+with 
+	member [Tempo].[Mes e Ano].[Soma] as 
+	'SUM({
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013]
+},[Measures].[Margem]) '
+select	
+{
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013],
+[Tempo].[Mes e Ano].[Soma] 
+}
+	on rows,
+{
+[Measures].[Margem]
+}		
+		on columns
+from	[COMPLETO]
+
+
+--Media
+with 
+	member [Tempo].[Mes e Ano].[Media] as 
+	'AVG({
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013]
+},[Measures].[Margem]) '
+select	
+{
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013],
+[Tempo].[Mes e Ano].[Media] 
+}
+	on rows,
+{
+[Measures].[Margem]
+}		
+		on columns
+from	[COMPLETO]
+
+
+--Max
+with 
+	member [Tempo].[Mes e Ano].[Maximo] as 
+	'MAX({
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013]
+},[Measures].[Margem]) '
+select	
+{
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[01-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[02-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[01-2013]&[03-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[04-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[05-2013],
+[Tempo].[Mes e Ano].&[2013]&[01-2013]&[02-2013]&[06-2013],
+[Tempo].[Mes e Ano].[Maximo] 
+}
+	on rows,
+{
+[Measures].[Margem]
+}		
+		on columns
+from	[COMPLETO]
+
+
+
+

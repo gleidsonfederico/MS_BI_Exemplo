@@ -1,0 +1,10 @@
+
+WITH
+SET [CLIENTES] AS
+'ORDER([Cliente].[Hierarquia Geográfica].[Nível Cliente], [Measures].[Faturamento], BDESC)'
+MEMBER [Measures].[Faturamento de Vendas] as
+'[Measures].[Faturamento]', FORMAT_STRING = "##,###.00"
+SELECT ({ [CLIENTES] }) On Rows,
+({[Measures].[Faturamento de Vendas]}) on Columns
+from [COMPLETO]
+Where ([Tempo].[Ano].&[2014])

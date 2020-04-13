@@ -1,0 +1,91 @@
+--DESLOCAMENTO NAS DIMENSOES
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014]
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014],
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014].LAG(3)
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014],
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014].LEAD(3)
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+SELECT	non empty (
+{
+LastPeriods(-6,
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014]
+)
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+SELECT	non empty (
+{
+head(
+LastPeriods(-6,
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014]
+),2)}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+SELECT	non empty (
+{
+tail(
+LastPeriods(-6,
+[Tempo].[Hierarquia do Mes e Ano].[Ano].&[2014].&[Primeiro Semestre 2014].&[2014]&[01-2014]&[02-2014].&[2014]&[01-2014]&[02-2014]&[06-2014]
+),2)}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]

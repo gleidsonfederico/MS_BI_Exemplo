@@ -1,0 +1,60 @@
+--NAVEGANDO NAS DIMENSOES
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+with member [measures].[Faturamento Desce 2] as 
+'([Measures].[Faturamento], ParallelPeriod([Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano],2,[Tempo].[Hierarquia do Mes e Ano].currentmember))',
+format_string = "#,###.00"
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[measures].[Faturamento Desce 2]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+
+
+
+
+with member [measures].[Faturamento Desce 12] as 
+'([Measures].[Faturamento], ParallelPeriod([Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano],12,[Tempo].[Hierarquia do Mes e Ano].currentmember))',
+format_string = "#,###.00"
+
+  member [measures].[Variacao Faturamento ano] as 
+'([Measures].[Faturamento] )/ 
+([Measures].[Faturamento],ParallelPeriod([Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano],12,
+[Tempo].[Hierarquia do Mes e Ano].currentmember))-1',
+format_string = "#,###.00 %"
+
+
+
+SELECT	non empty (
+{
+[Tempo].[Hierarquia do Mes e Ano].[Nivel Mes e Ano].members
+}
+	)ON ROWS,
+{
+[Measures].[Faturamento],
+[measures].[Faturamento Desce 12],
+[measures].[Variacao Faturamento ano]
+}		
+		ON COLUMNS
+FROM	[COMPLETO]
+
+

@@ -1,0 +1,14 @@
+WITH
+SET [CLIENTES] AS
+'ORDER([Cliente].[Hierarquia Geográfica].[Nível Cliente], [Measures].[Faturamento], BDESC)'
+MEMBER [Measures].[Posição no Rank] as
+'RANK([Cliente].[Hierarquia Geográfica].Currentmember, [CLIENTES])', FORMAT_STRING = "#;#;-"
+MEMBER [Measures].[Faturamento de Vendas] as
+'[Measures].[Faturamento]', FORMAT_STRING = "##,###.00"
+MEMBER [Measures].[% Vendas] as
+'[Measures].[Faturamento]/([Measures].[Faturamento], [Cliente].[Hierarquia Geográfica].[All])', 
+FORMAT_STRING = "#,###.00 %"
+SELECT ({ [CLIENTES] }) On Rows,
+({[Measures].[Faturamento de Vendas], [Measures].[Posição no Rank], [Measures].[% Vendas]}) on Columns
+from [COMPLETO]
+Where ([Tempo].[Ano].&[2014])
